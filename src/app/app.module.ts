@@ -10,7 +10,7 @@ import {TopbarComponent} from "./components/topbar/topbar.component";
 import {CartService} from "./services/cart.service";
 import {CartPopupComponent} from "./pages/cart/cart-popup/cart-popup.component";
 import {ProductService} from "./services/products.service";
-//import { AngularRaveModule } from 'angular-rave';
+import { RavepaymentModule } from 'angular4-ravepayment';
 import { environment } from '../environments/environment';
 
 
@@ -27,7 +27,7 @@ import { environment } from '../environments/environment';
         FormsModule,
         HttpModule,
         RouterModule.forRoot(appRoutes),
-        //AngularRaveModule
+        RavepaymentModule,
     ],
     providers: [CartService,ProductService],
     bootstrap: [AppComponent]

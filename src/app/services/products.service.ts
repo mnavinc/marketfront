@@ -4,7 +4,8 @@
 
 import {Injectable} from "@angular/core";
 import {Http,Response} from "@angular/http";
-import {Observable} from "rxjs";
+import { Observable } from "rxjs";
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class ProductService {
@@ -12,8 +13,8 @@ export class ProductService {
     constructor(public http: Http) { }
 
     public getProducts(dataURL:string){
-        return this.http.get(dataURL)
-            .map((res:Response) => res.json())
-            .catch((error:any) => Observable.throw(error || 'Server error'));
+        return this.http.get(dataURL).pipe(
+            map((res:Response) => res.json()),
+            catchError((error:any) => Observable.throw(error || 'Server error')))
     }
 }
