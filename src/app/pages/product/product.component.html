@@ -1,0 +1,61 @@
+<div *ngIf="product" class="product-page">
+    <div class="product-page-container">
+        <ol class="product-breadcrumbs">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item"> / <a routerLink="/">Plots</a></li>
+            <li class="breadcrumb-item"> / {{product.title}}</li>
+        </ol>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="product-details-image" [ngStyle]="{'background-image': 'url(./assets/imgs/plots/' + product.image + ')'}"></div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-details-row">
+                    <div class="product-brand">{{product.company}}</div>
+                    <h1 class="product-title">{{product.title}}</h1>
+                    <div class="product-price">Starting price: <strong>{{product.startingPrice | currency :'INR':true }}</strong></div>
+                    <div class="product-description">{{product.description}}</div>
+                    <div class="product-details">
+                        <ul>
+                            <li><span class="l1">Rera No:</span><span class="value">{{product.rera}}</span></li>
+                            <li><span class="l1">Type:</span><span class="value">{{product.type == 'R' ? 'Residential' : 'Commercial'}}</span></li>
+                            <li><span class="l1">Plots sizes available:</span><span class="value">{{product.plots}}</span></li>
+                            <li><span class="l1">Launch date:</span><span class="value">{{product.launchDate}}</span></li>
+                            <li><span class="l1">Approved by:</span><span class="value">{{product.approval}}</span></li>
+                            <li><span class="l1">Total area:</span><span class="value">{{product.totalArea}} acres</span></li>
+                            <li><span class="l1">Status:</span><span class="value">{{product.status == 'RM' ? 'Ready to move' : (product.status == 'AW' ? 'Awaited' : '')}}</span></li>
+
+                            
+                        </ul>
+                    </div>
+                </div>
+                <!-- <div class="product-details-button">
+                    <quantity-control [quantity]="quantity" (onChange)="changeQuantity($event)"></quantity-control>
+                    <div class="product-cart-button button button-primary button-large" (click)="addToCart(product)">Add to cart</div>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h3 class="heading">Available plots</h3>
+                <ul class="plots row">
+                    <li *ngFor="let plot of product.availablePlots;let i = index">
+                        <div class="plot">
+                            <div class="img" [ngStyle]="{'background-image': 'url(./assets/imgs/plots/' + plot.image + ')'}"></div> <!-- -->
+                            <div class="details">
+                                <h6><span class="lab">Plot Type:</span><span class="val">{{plot.type == 'R' ? 'Residential' : 'Commercial'}}</span></h6>
+                                <h6><span class="lab">Area:</span><span class="val">{{plot.area}} sqyd</span></h6>
+                                <h6><span class="lab">Price:</span><span class="val">{{plot.price | currency :'INR':true}}</span></h6>
+                                <div class="product-details-button">
+                                    <div class="product-cart-button button button-secondary button" (click)="addToCart(plot)" ng-disabled="plot.status == 'NA'"><i class="fa fa-shopping-cart"></i></div>
+                                    <div class="product-cart-button button button-primary button" (click)="buy(plot)" ng-disabled="plot.status == 'NA'">BUY</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
