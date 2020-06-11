@@ -8,6 +8,8 @@ import {RouterModule} from "@angular/router";
 import {CartPageComponent} from "./cart-page.component";
 import {cartPageRoutes} from "./cart-page.routes";
 import { HttpClientModule } from "@angular/common/http";
+import { WindowRef } from '../../services/window.service';
+
 @NgModule({
     imports: [
         SharedModule,
@@ -16,6 +18,7 @@ import { HttpClientModule } from "@angular/common/http";
     ],
     declarations: [
         CartPageComponent,
-    ]
+    ],
+    providers: [ WindowRef ]
 })
 export class CartPageModule { }

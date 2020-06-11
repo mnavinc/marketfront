@@ -61,13 +61,13 @@
         </div>
         <div class="cart-buttons">
             <div class="continue-shopping"><a routerLink="/">continue shopping</a></div>
-            <button class="checkout-button button button-primary button-large" (click)="proceedToPay($event)">
-                <ng-container *ngIf="processingPayment">
+            <button class="checkout-button button button-primary button-large" id="rzp-button1" (click)="proceedToPay($event)">Proceed to Pay <!--(click)="proceedToPay($event)"-->
+                <!-- <ng-container *ngIf="processingPayment">
                     <i class="fa fa-circle-o-notch fa-spin"></i> Processing
                 </ng-container>
                 <ng-container *ngIf="!processingPayment"> 
                   Proceed to Pay
-                </ng-container>
+                </ng-container> -->
             </button>
         </div>
     </div>

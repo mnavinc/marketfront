@@ -4,16 +4,14 @@ var key_id = "rzp_test_PYEQ2bi2cL6DYp";
 var key_secret = "JQolldjPQ2OWBObIpQezCPLp";
 var request = require("request");
 const cors = require('cors')({origin: true});
+const express = require('express');
+
 var instance = new Razorpay({
   key_id: key_id,
   key_secret: key_secret
 });
-const admin = require('firebase-admin');
-admin.initializeApp();
-
 
 exports.createOrder = functions.https.onRequest((req, res) => {
-  req.set('Access-Control-Allow-Origin', 'localhost');
   return cors(req, res, () => {
     var options = {
       amount: req.body.amount,
@@ -21,6 +19,7 @@ exports.createOrder = functions.https.onRequest((req, res) => {
       receipt: req.body.receipt,  
     };
     instance.orders.create(options, (err, order) => {
+      console.log(err);
       order ? res.status(200).send(order) : res.status(500).send(err);
     });
   });

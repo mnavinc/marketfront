@@ -12,7 +12,8 @@ import {CartPopupComponent} from "./pages/cart/cart-popup/cart-popup.component";
 import {ProductService} from "./services/products.service";
 import { PaymentService } from './services/payments.service';
 import { HttpClientModule } from '@angular/common/http';
-
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
 @NgModule({
     declarations: [
         AppComponent,
@@ -27,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
         HttpModule,
         HttpClientModule,
         RouterModule.forRoot(appRoutes),
+        AngularFireModule.initializeApp(environment.firebase)
     ],
     providers: [CartService,ProductService,PaymentService],
     bootstrap: [AppComponent]
