@@ -1,6 +1,6 @@
 <div class="cart-page-container">
     <div class="cart-page-header">
-        <h1>Shopping Cart</h1>
+        <h1>Buy it now. Before the prices go high..</h1>
     </div>
     <div class="cart-page-content" *ngIf="cartList.length > 0">
         <div class="cart-item-header cart-item-row">
@@ -61,13 +61,13 @@
         </div>
         <div class="cart-buttons">
             <div class="continue-shopping"><a routerLink="/">continue shopping</a></div>
-            <button class="checkout-button button button-primary button-large" id="rzp-button1" (click)="proceedToPay($event)">Proceed to Pay <!--(click)="proceedToPay($event)"-->
-                <!-- <ng-container *ngIf="processingPayment">
+            <button class="checkout-button button button-primary button-large" id="rzp-button1" [disabled]="processingPayment" (click)="proceedToPay($event)"><!--(click)="proceedToPay($event)"-->
+                <ng-container *ngIf="processingPayment">
                     <i class="fa fa-circle-o-notch fa-spin"></i> Processing
                 </ng-container>
                 <ng-container *ngIf="!processingPayment"> 
                   Proceed to Pay
-                </ng-container> -->
+                </ng-container>
             </button>
         </div>
     </div>
@@ -75,13 +75,10 @@
         <h4>Your cart is empty.</h4>
         <a routerLink="/">Go shopping</a>
     </div>
-        
-    <div class="row payment-response" *ngIf="paymentResponse.body">
-        <div class="col-sm-12">
-             <div class="alert alert-success" role="alert">
-                Payment successfull, With payment id {{paymentResponse.req.payment_id}} Below are the details
-              </div>
-            <!-- <prettyjson [obj]="paymentResponse.body"></prettyjson> -->
-        </div>
-      </div>
+
+      
 </div>
+
+
+
+

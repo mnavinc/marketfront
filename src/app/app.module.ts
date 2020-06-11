@@ -13,13 +13,12 @@ import {ProductService} from "./services/products.service";
 import { PaymentService } from './services/payments.service';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
-import { AngularFireModule } from '@angular/fire';
+// import { AngularFireModule } from '@angular/fire';
 @NgModule({
     declarations: [
         AppComponent,
         TopbarComponent,
         CartPopupComponent,
-        
     ],
     imports: [
         BrowserAnimationsModule,
@@ -28,7 +27,7 @@ import { AngularFireModule } from '@angular/fire';
         HttpModule,
         HttpClientModule,
         RouterModule.forRoot(appRoutes),
-        AngularFireModule.initializeApp(environment.firebase)
+        //AngularFireModule.initializeApp(environment.firebase)
     ],
     providers: [CartService,ProductService,PaymentService],
     bootstrap: [AppComponent]

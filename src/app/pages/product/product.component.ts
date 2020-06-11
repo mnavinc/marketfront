@@ -26,7 +26,7 @@ export class ProductComponent implements OnInit {
             })
     }
     getProduct = (id) => {
-        this.sub = this.productService.getProducts('./assets/mock-data/products2.json')
+        this.sub = this.productService.getProducts('./assets/mock-data/products.json')
             .subscribe(res => {
                 this.product = res[id-1];
             })

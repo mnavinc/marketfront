@@ -40,21 +40,41 @@
             <div class="col">
                 <h3 class="heading">Available plots</h3>
                 <ul class="plots row">
-                    <li *ngFor="let plot of product.availablePlots;let i = index">
-                        <div class="plot">
+                    <li *ngFor="let plot of product.availablePlots;let i = index" [ngClass]="{'disabled' : plot.status == 'NA'}">
+                        <div class="plot" >
                             <div class="img" [ngStyle]="{'background-image': 'url(./assets/imgs/plots/' + plot.image + ')'}"></div> <!-- -->
                             <div class="details">
                                 <h6><span class="lab">Plot Type:</span><span class="val">{{plot.type == 'R' ? 'Residential' : 'Commercial'}}</span></h6>
                                 <h6><span class="lab">Area:</span><span class="val">{{plot.area}} sqyd</span></h6>
+                                <h6><span class="lab">Area:</span><span class="val">{{plot.facing}}</span></h6>
                                 <h6><span class="lab">Price:</span><span class="val">{{plot.price | currency :'INR':true}}</span></h6>
                                 <div class="product-details-button">
-                                    <div class="product-cart-button button button-secondary button" (click)="addToCart(plot)" ng-disabled="plot.status == 'NA'"><i class="fa fa-shopping-cart"></i></div>
-                                    <div class="product-cart-button button button-primary button" (click)="buy(plot)" ng-disabled="plot.status == 'NA'">BUY</div>
+                                    <div class="product-cart-button button button-secondary button" (click)="addToCart(plot)"><i class="fa fa-shopping-cart"></i></div>
+                                    <div class="product-cart-button button button-primary button" (click)="buy(plot)">BUY</div>
                                 </div>
                             </div>
                         </div>
                     </li>
                 </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h3 class="heading">Features</h3>
+                <div class="features">
+                    <ul>
+                        <li>Entrance Arch With Gate</li>
+                        <li>Park And Play Area"</li>
+                        <li>Led Street Lights</li>
+                        <li>40' and 33' Black Top Roads</li>
+                        <li>Water Tap Connection To Every Plot</li>
+                        <li>Cctv Surveillance At Main Entrance</li>
+                        <li>Underground Drainage System</li>
+                        <li>24*7 Electricity</li>
+                        <li>Jogging Track</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

@@ -1,12 +1,14 @@
 /**
  * Created by ncreato on 09/06/2020.
  */
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, ResolvedReflectiveFactory, NgZone } from '@angular/core';
 import {CartBaseComponent} from "./cart-base.component";
 import {CartService} from "../../services/cart.service";
 import { PaymentService } from '../../services/payments.service';
 import { environment } from '../../../environments/environment';
 import { WindowRef } from '../../services/window.service';
+import { $ } from 'protractor';
+import { ActivatedRoute, Router } from '@angular/router';
 //import { PaymentInstance } from 'angular-rave';
 
 
@@ -22,39 +24,25 @@ export class CartPageComponent extends CartBaseComponent{
     payableAmount = 0;
     // WindowRef: any;
     processingPayment: boolean;
+    paymentSucessful:boolean = false;
     paymentResponse:any = {};
      
     rzp1:any;
 
-    constructor(protected cartService: CartService,protected paymentService: PaymentService,private changeRef: ChangeDetectorRef, private winRef: WindowRef) {
+    constructor(private route: ActivatedRoute,
+        protected cartService: CartService,
+        protected paymentService: PaymentService,
+        private changeRef: ChangeDetectorRef,
+        private winRef: WindowRef,
+        private router: Router,
+        private zone: NgZone) {
         super(cartService, paymentService);
     }
-
-    // options = {
-    //     'key': environment.RAZORPAY_KEY_ID,
-    //     'amount': 'totalPrice', // 2000 paise = INR 20
-    //     'name': 'etikoppa',
-    //     'description': 'Purchase Description',
-    //     'image': '',
-    //     'handler': function(response) {
-    //         alert(response.razorpay_payment_id);
-    //     },
-    //     'prefill': {
-    //         'name': 'customer1',
-    //         'email': 'customer@etikoppa.com'
-    //     },
-    //     'notes': {
-    //         'address': 'Hyderabad'
-    //     },
-    //     'theme': {
-    //         'color': '#F37254'
-    //     }
-    //   };
-
 
     ngOnInit() {
         
     }
+
     changeQuantity = (cart,quantity) => {
         cart.quantity = quantity;
         this.cartService.reloadCart(this.cartList);
@@ -62,8 +50,7 @@ export class CartPageComponent extends CartBaseComponent{
 
     proceedToPay($event) {
         console.log($event);
-        this.processingPayment = true;
-        this.payableAmount =  this.totalPrice * 100;
+        
         this.initiatePaymentModal($event);
     }
     
@@ -71,20 +58,16 @@ export class CartPageComponent extends CartBaseComponent{
         initiatePaymentModal(event) {
 
         //let receiptNumber = `Receipt#${Math.floor(Math.random() * 5123 * 43) + 10}`;
+        this.processingPayment = true;
+        this.payableAmount =  this.totalPrice * 100;
 
         let options = {
             "key": "rzp_test_PYEQ2bi2cL6DYp", // Enter the Key ID generated from the Dashboard
             "amount": this.payableAmount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             "currency": "INR",
-            "name": "Etikoppa",
+            "name": "Marketfront",
             "description": "Test Transaction",
-            "image": "/imgs/logo-pay.jpg",
-            "handler": function (response){
-                alert(response.razorpay_payment_id);
-                alert(response.razorpay_order_id);
-                alert(response.razorpay_signature)
-                //savetoDB(response);
-            },
+            "image": "../../../assets/imgs/logo-pay.jpg",
             "prefill": {
                 "name": "ncreato",
                 "email": "admin@marketfront.com",
@@ -94,79 +77,43 @@ export class CartPageComponent extends CartBaseComponent{
                 "address": "Hyderabad, India"
             },
             "theme": {
-                "color": "#F37254"
-            }
+                "color": "#2f3542"
+            },
+            "handler": this.paymentResponseHander.bind(this),
+           "modal": {
+                // We should prevent closing of the form when esc key is pressed.
+                escape: false,
+            },
         };
+
+        // options.modal.ondismiss = (() => {
+        //     // handle the case when user closes the form while transaction is in progress
+        //     console.log('Transaction cancelled.');
+        // });
 
         var rzp1 = new Razorpay(options);
         rzp1.open();
     }
-
-    savetoDB(response) {
-        console.log(response);
-        //let payRef = environment.firebase.database().ref('payment');
-
-        // payRef.child('123333').set({
-
-        // })
-    }
-
+    // savetoDB(response) {
+    //     console.log(response)
+    //     var payRef = environment.firebase.database().ref('razorpay');
     
-    // let orderDetails = {
-    //     amount: this.payableAmount,
-    //     receipt: receiptNumber,
-    // }
-
-    // this.paymentService.createOrder(orderDetails)
-    //     .subscribe(order => {
-    //     console.log("TCL: CheckoutComponent -> initiatePaymentModal -> order", order)
-    //         var rzp1 = new this.WindowRef.Razorpay(this.preparePaymentDetails(order));
-    //         this.processingPayment = false;
-    //         rzp1.open(); 
-    //         event.preventDefault();
-    //     }, error => {
-    //     console.log("TCL: CheckoutComponent -> initiatePaymentModal -> error", error)
-
+    //     payRef.child('123456789').set({
+    //     payment_id : response.razorpay_payment_id
     //     })
-
     // }
+    
 
-
-    // preparePaymentDetails(order){
-
-    // var ref = this;
-    // return  {
-    //     "key": environment.RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
-    //     "amount": this.payableAmount, // Amount is in currency subunits. Default currency is INR. Hence, 29935 refers to 29935 paise or INR 299.35.
-    //     "name": 'Pay',
-    //     "currency": order.currency,
-    //     "order_id": order.id,//This is a sample Order ID. Create an Order using Orders API. (https://razorpay.com/docs/payment-gateway/orders/integration/#step-1-create-an-order). Refer the Checkout form table given below
-    //     "image": 'https://angular.io/assets/images/logos/angular/angular.png',
-    //     "handler": function (response){
-    //     ref.handlePayment(response);
-    //     },
-    //     "prefill": {
-    //         "name": `etikoppa`
-    //     },
-    //     "theme": {
-    //         "color": "#2874f0"
-    //     }
-    //     };
-    // }
-
-    // handlePayment(response) {
-
-    // this.paymentService.capturePayment({
-    //     amount: this.payableAmount,
-    //     payment_id: response.razorpay_payment_id
-    // })
-    //     .subscribe(res => {
-    //     this.paymentResponse = res;
-    //     this.changeRef.detectChanges();
-    //     },
-    //     error => {
-    //     this.paymentResponse = error;
-    //     });
+    paymentResponseHander(response) {
+        console.log(response);
+        this.paymentSucessful = true;
+        this.zone.run(() => {
+            this.router.navigate(['./success'], {relativeTo: this.route});
+          });
+        
+    }
+    // redirect(response) {
+    //     console.log('res:' + response)
     // }
 
    

@@ -9,6 +9,7 @@ import {CartPageComponent} from "./cart-page.component";
 import {cartPageRoutes} from "./cart-page.routes";
 import { HttpClientModule } from "@angular/common/http";
 import { WindowRef } from '../../services/window.service';
+import { SuccessComponent } from './success/success.component';
 
 @NgModule({
     imports: [
@@ -18,6 +19,7 @@ import { WindowRef } from '../../services/window.service';
     ],
     declarations: [
         CartPageComponent,
+        SuccessComponent,
     ],
     providers: [ WindowRef ]
 })
