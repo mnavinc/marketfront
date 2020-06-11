@@ -6,7 +6,9 @@ import {BehaviorSubject} from "rxjs";
 import {Product} from "../model/product";
 import {Cart} from "../model/cart";
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class CartService {
 
     public cartListSubject = new BehaviorSubject([]);

@@ -5,6 +5,7 @@
 import {Component, HostBinding, ElementRef} from "@angular/core";
 import {CartService} from "../../../services/cart.service";
 import {CartBaseComponent} from "../cart-base.component";
+import { PaymentService } from "../../../services/payments.service";
 
 @Component({
     selector: 'cart-popup',
@@ -19,9 +20,10 @@ export class CartPopupComponent extends CartBaseComponent{
 
     constructor(
         protected cartService: CartService,
+        protected paymentService: PaymentService,
         private eleref: ElementRef
     ) {
-        super(cartService);
+        super(cartService, paymentService);
     }
     ngOnInit() {
         this.cartService.toggleCartSubject.subscribe(res => {

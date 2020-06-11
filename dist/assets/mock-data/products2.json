@@ -1,0 +1,208 @@
+[
+    {
+      "id": 1,
+      "title": "AMR Future City",
+      "company": "AMR Infrastructures",
+      "rera": "P02400000583",
+      "address": "Shadnagar, Hyderabad",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum metus. In eget massa sed enim hendrerit auctor a eget.",
+      "image": "t2.jpg",
+      "startingPrice":  890000,
+      "type": "R",
+      "plots": "150-614",
+      "approval": "DTCP",
+      "launchDate": "Jan 2020",
+      "status": "RM",
+      "totalArea": 19,
+      "availablePlots": [
+          {
+            "id":101,
+            "title": "AMR Future City",
+            "company": "AMR Infrastructures",
+            "type": "R",
+            "area": 150,
+            "price": 890000,
+            "status": "RM",
+            "facing": "North",
+            "approvedBy": "TSRERA",
+            "image": "amr-plot.jpg"
+          },
+          {
+            "id":102,
+            "title": "AMR Future City",
+            "company": "AMR Infrastructures",
+            "type": "R",
+            "area": 220,
+            "price": 1310000,
+            "status": "NA",
+            "facing": "North",
+            "approvedBy": "TSRERA",
+            "image": "amr-plot.jpg"
+          },
+          {
+            "id":103,
+            "title": "AMR Future City",
+            "company": "AMR Infrastructures",
+            "type": "R",
+            "area": 507,
+            "price": 3040000,
+            "status": "RM",
+            "facing": "East",
+            "approvedBy": "TSRERA",
+            "image": "amr-plot.jpg"
+          },
+          {
+            "id":104,
+            "title": "AMR Future City",
+            "company": "AMR Infrastructures",
+            "type": "R",
+            "area": 614,
+            "price": 3680000,
+            "status": "RM",
+            "facing": "East",
+            "approvedBy": "TSRERA",
+            "image": "amr-plot.jpg"
+          }
+      ],
+      "facilities":["Entrance Arch With Gate", "Park And Play Area", "Led Street Lights", "40' and 33' Black Top Roads", "Water Tap Connection To Every Plot", "Cctv Surveillance At Main Entrance", "Underground Drainage System", "24*7 Electricity", "Jogging Track", "Septic Tank", "Beautiful Landscape"],
+      "logo": "amr-logo.jpg"
+
+    },
+    {
+        "id": 2,
+        "title": "Aryavartha Nagari",
+        "company": "Suchirindia Infratech",
+        "rera": "P02400000583",
+        "address": "Thumukunta, Hyderabad",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum metus. In eget massa sed enim hendrerit auctor a eget.",
+        "image": "ayravatha.jpg",
+        "startingPrice":  5200000,
+        "type": "R",
+        "plots": "150-630",
+        "approval": "DTCP",
+        "launchDate": "Jan 2020",
+        "status": "RM",
+        "totalArea": 86,
+        "availablePlots": [
+            {
+              "id":201,
+              "title": "Aryavartha Nagari",
+              "company": "Suchirindia Infratech",
+              "type": "R",
+              "area": 150,
+              "price": 5200000,
+              "status": "NA",
+              "facing": "North",
+              "approvedBy": "TSRERA",
+              "image": "ayravatha-plot.jpg"
+            },
+            {
+              "id":202,
+              "title": "Aryavartha Nagari",
+              "company": "Suchirindia Infratech",
+              "type": "R",
+              "area": 250,
+              "price": 7000000,
+              "status": "RM",
+              "facing": "North",
+              "approvedBy": "TSRERA",
+              "image": "ayravatha-plot.jpg"
+            },
+            {
+              "id":203,
+              "type": "R",
+              "title": "Aryavartha Nagari",
+              "company": "Suchirindia Infratech",
+              "area": 438,
+              "price": 15300000,
+              "status": "RM",
+              "facing": "East",
+              "approvedBy": "TSRERA",
+              "image": "ayravatha-plot.jpg"
+            },
+            {
+              "id":204,
+              "type": "R",
+              "title": "Aryavartha Nagari",
+              "company": "Suchirindia Infratech",
+              "area": 630,
+              "price": 20200000,
+              "status": "RM",
+              "facing": "East",
+              "approvedBy": "TSRERA",
+              "image": "ayravatha-plot.jpg"
+            }
+        ],
+        "facilities":["Entrance Arch With Gate", "Park And Play Area", "Led Street Lights", "40' and 33' Black Top Roads", "Water Tap Connection To Every Plot", "Cctv Surveillance At Main Entrance", "Underground Drainage System", "24*7 Electricity", "Jogging Track", "Septic Tank", "Beautiful Landscape"],
+        "logo": "aryavatha-logo.jpg"
+    },
+    {
+        "id": 3,
+        "title": "Sri Achyuta Grand",
+        "company": "Aspirealty",
+        "rera": "P02400000583",
+        "address": "Gowdavalli, Kompally",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at purus pulvinar, placerat turpis ac, interdum metus. In eget massa sed enim hendrerit auctor a eget.",
+        "image": "achyutha.jpg",
+        "startingPrice":  3840000,
+        "type": "R",
+        "plots": "150-615",
+        "approval": "DTCP",
+        "launchDate": "Jan 2020",
+        "status": "RM",
+        "totalArea": 19,
+        "availablePlots": [
+            {
+              "id":301,
+              "title": "Sri Achyuta Grand",
+              "company": "Aspirealty",
+              "type": "R",
+              "area": 150,
+              "price": 3840000,
+              "status": "RM",
+              "facing": "North",
+              "approvedBy": "TSRERA",
+              "image": "achyutha-plot.jpg"
+            },
+            {
+              "id":302,
+              "title": "Sri Achyuta Grand",
+              "company": "Aspirealty",
+              "type": "R",
+              "area": 220,
+              "price": 7240000,
+              "status": "NA",
+              "facing": "North",
+              "approvedBy": "TSRERA",
+              "image": "achyutha-plot.jpg"
+            },
+            {
+              "id":303,
+              "title": "Sri Achyuta Grand",
+              "company": "Aspirealty",
+              "type": "R",
+              "area": 507,
+              "price": 12840000,
+              "status": "RM",
+              "facing": "East",
+              "approvedBy": "TSRERA",
+              "image": "achyutha-plot.jpg"
+            },
+            {
+              "id":304,
+              "title": "Sri Achyuta Grand",
+              "company": "Aspirealty",
+              "type": "R",
+              "area": 615,
+              "price": 2840000,
+              "status": "RM",
+              "facing": "East",
+              "approvedBy": "TSRERA",
+              "image": "achyutha-plot.jpg"
+            }
+        ],
+        "facilities":["Entrance Arch With Gate", "Park And Play Area", "Led Street Lights", "40' and 33' Black Top Roads", "Water Tap Connection To Every Plot", "Cctv Surveillance At Main Entrance", "Underground Drainage System", "24*7 Electricity", "Jogging Track", "Septic Tank", "Beautiful Landscape"],
+        "logo": "aryavatha-logo.jpg"
+    }
+  ]
+  

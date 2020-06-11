@@ -7,11 +7,11 @@ import {SharedModule} from "../../shared/shared.module";
 import {RouterModule} from "@angular/router";
 import {CartPageComponent} from "./cart-page.component";
 import {cartPageRoutes} from "./cart-page.routes";
-import { RavepaymentModule } from 'angular4-ravepayment';
+import { HttpClientModule } from "@angular/common/http";
 @NgModule({
     imports: [
         SharedModule,
-        RavepaymentModule,
+        HttpClientModule,
         RouterModule.forChild(cartPageRoutes)
     ],
     declarations: [

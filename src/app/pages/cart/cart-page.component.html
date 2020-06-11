@@ -9,7 +9,6 @@
             <div class="cart-item-cell cart-item-total"><span>Total</span></div>
             <div class="cart-item-cell cart-item-action"><span>Action</span></div>
         </div>
-        <pre>{{cartList | json}}</pre>
         <div class="cart-item-row" *ngFor="let cart of cartList;let i = index">
             <div class="cart-item-cell cart-item-product">
                 <div class="cart-item-thumbnail" [ngStyle]="{'background-image': 'url(./assets/imgs/plots/' + cart.product.image + ')'}">
@@ -62,25 +61,14 @@
         </div>
         <div class="cart-buttons">
             <div class="continue-shopping"><a routerLink="/">continue shopping</a></div>
-            <!-- <button class="checkout-button button button-primary button-large"
-            angular-rave
-            [customer_email] = "'user@example.com'"
-            [custom_title]="'Buy Plot'"
-            [amount]="totalPrice"
-            [txref]="Date.now()"
-            (callback)="paymentSuccess($event)"
-            (onclose)="paymentFailure()"
-            (init)="paymentInit()">Checkout ({{totalPrice | currency :'INR':true}})</button> -->
-            <rave-pay-button
-                [text]="'Pay me,my money'"
-                [className]="'paymentbtn'"
-                (callback)="confirmPayment($event)"
-                (close)="cancelledPayment()"
-                [key]="'FLWPUBK-4e9d4e37974a61157ce8ca4f43c84936-X'"
-                [reference]="generateReference()"
-                [amount]="totalPrice"
-                [email]="'sf0037376@gmail.com'"
-            ></rave-pay-button >
+            <button class="checkout-button button button-primary button-large" (click)="proceedToPay($event)">
+                <ng-container *ngIf="processingPayment">
+                    <i class="fa fa-circle-o-notch fa-spin"></i> Processing
+                </ng-container>
+                <ng-container *ngIf="!processingPayment"> 
+                  Proceed to Pay
+                </ng-container>
+            </button>
         </div>
     </div>
     <div class="cart-page-content" *ngIf="cartList.length == 0">
@@ -88,8 +76,12 @@
         <a routerLink="/">Go shopping</a>
     </div>
         
-    <div *ngIf="loading" class="notification is-info">Loading....</div>
-    <pre *ngIf="confirmation" style="max-width: 500px;">
-    {{ confirmation | json }}
-    </pre>
+    <div class="row payment-response" *ngIf="paymentResponse.body">
+        <div class="col-sm-12">
+             <div class="alert alert-success" role="alert">
+                Payment successfull, With payment id {{paymentResponse.req.payment_id}} Below are the details
+              </div>
+            <!-- <prettyjson [obj]="paymentResponse.body"></prettyjson> -->
+        </div>
+      </div>
 </div>

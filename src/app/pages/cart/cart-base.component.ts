@@ -3,10 +3,11 @@
  */
 import {CartService} from "../../services/cart.service";
 import {Cart} from "../../model/cart";
+import { PaymentService } from "../../services/payments.service";
 export class CartBaseComponent{
     public cartList:Cart[];
     public totalPrice: number;
-    constructor(protected cartService: CartService) {
+    constructor(protected cartService: CartService, protected paymenttService: PaymentService) {
         this.loadCart();
     }
     loadCart = () => {
